@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="farkle.css" />
+    <title>Farkle!</title>
+  </head>
+
+  <body>
+    <header class="row header">Welcome to Farkle!</header>
+    <div class="row">
+      <!-- Dice images -->
+      <div class="dice">
+        <img src="images/1.png" id="die1" data-number="0" />
+        <img src="images/2.png" id="die2" data-number="1" />
+        <img src="images/3.png" id="die3" data-number="2" />
+        <img src="images/4.png" id="die4" data-number="3" />
+        <img src="images/5.png" id="die5" data-number="4" />
+        <img src="images/6.png" id="die6" data-number="5" />
+      </div>
+    </div>
+    <!-- Scoring -->
+    <div id="score" class="row score">0</div>
+
+    <!-- Button row -->
+    <div class="row">
+      <button id="roll-btn" class="button roll column">Roll Dice</button>
+      <button id="bank-btn" class="button bank column">Bank Score</button>
+    </div>
+    <script type="module" src="farkle.js"></script>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+img{
+	width:80px;
+}
+body{
+	background-color: #fff;
+	background-image: linear-gradient(-90deg, #667be6, #754da3);
+	font-family: arial;
+}
+.row{
+	margin:auto;
+	width: 800px;
+	max-width: 100%;
+}
+.header{
+	height: 100px;
+	max-height: 100%;
+	font-size: 50px;
+	text-align: center;
+	line-height: 100px;
+	font-family: arial;
+	color: #fff;
+}
+.dice{
+	max-width: 520px;
+	margin:0 auto;
+}
+.score{
+	background-color: rgba(52,52,52,0.3);
+	color: #fff;
+	height: 60px;
+	max-height:100%;
+	font-size: 32px;
+	text-align: center;
+	line-height: 60px;
+	width:120px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.button {
+  background-color: green;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  border: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 25px;
+}
+.column{
+	float: left;
+	width:20%;
+	margin-left: 160px;
+}
+.roll{
+}
+.roll:hover{
+}
+.bank{
+}
+.bank:hover{
+}
+.transparent{
+	/*For dice that are selected*/
+	opacity: 0.75;
+}
