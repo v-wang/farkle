@@ -62,19 +62,22 @@ async function selectDie(diceArr) {
   selectedDice.forEach((die) => {
     roll[die.value] += 1;
   });
-
   return roll;
 }
 
 function calcScore(roll) {
-  switch (true) {
-    case roll[1] < 3:
-      roundScore.push(roll[1] * 100);
-      break;
-    case roll[1] == 3:
-      roundScore.push(1000);
-  }
-  return roundScore.reduce((a, b) => a + b);
+  const scoreGuide = {
+    1: { 1: 100, 2: 200, 3: 1000, 4: 1100, 5: 1200, 6: 2000 },
+    2: { 3: 200 },
+    3: { 3: 300 },
+    4: { 3: 400 },
+    5: { 1: 50, 2: 100, 3: 500, 4: 550, 5: 600, 6: 1000 },
+    6: { 3: 600 },
+  };
+
+  // console.log(Object.keys(scoreGuide).find((key) => key == 2));
+
+  // return roundScore.reduce((a, b) => a + b);
 }
 
 DOMELEM.diceImgs.forEach((dice) => {
@@ -88,14 +91,10 @@ DOMELEM.rollBtn.addEventListener('click', () => {
 });
 
 DOMELEM.bankBtn.addEventListener('click', () => {
-  // let total = Object.keys(roll).map((num) => calcScore(num));
-  // console.log(total);
   selectDie(diceArr)
     .then((roll) => calcScore(roll))
     .then((totalScore) => {
       DOMELEM.score.innerText = totalScore;
-    })
-    .then();
-
-  // console.log(totalScore);
+      Object.keys(roll).forEach((num) => (roll[num] = 0));
+    });
 });
