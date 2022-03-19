@@ -12,6 +12,14 @@ function initializeDice() {
     diceArr[i].clicked = 0;
   }
 }
+const scoreKey = {
+  1: { 3: 1000, 4: 1100, 5: 4200, 6: 2000 },
+  2: { 3: 300 },
+  3: { 3: 400 },
+  4: { 3: 500 },
+  5: { 1: 50, 2: 100, 3: 500 },
+  6: { 3: 600 },
+};
 
 var diceArr = [];
 var roundScore = [];
@@ -24,7 +32,6 @@ const roll = {
   6: 0,
 };
 
-// ultimate plan was to play around with async and promises to avoid too many callbacks
 /*Rolling dice values*/
 async function rollDice() {
   for (var i = 0; i < 6; i++) {
@@ -55,7 +62,6 @@ function diceClick(img) {
   }
 }
 
-// Almost got this, tried to stuff it all into one switch case but I should probably parse this out - wrote out game rules and plan to refactor later
 async function selectDie(diceArr) {
   let selectedDice = diceArr.filter((die) => die.clicked != 0);
 
@@ -67,14 +73,13 @@ async function selectDie(diceArr) {
 }
 
 function calcScore(roll) {
-  switch (true) {
-    case roll[1] < 3:
-      roundScore.push(roll[1] * 100);
-      break;
-    case roll[1] == 3:
-      roundScore.push(1000);
-  }
-  return roundScore.reduce((a, b) => a + b);
+  Object.keys(roll).forEach((key) => {
+    let val = roll[key];
+    let keyVal = scoreKey[key];
+    roundScore.push(keyVal[val]);
+  });
+  let final = roundScore.filter((num) => num);
+  return final.reduce((a, b) => a + b);
 }
 
 DOMELEM.diceImgs.forEach((dice) => {
